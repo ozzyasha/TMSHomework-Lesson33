@@ -9,8 +9,8 @@ import UIKit
 
 class LoginViewController: UIViewController {
     
+    let usernameTextField = UITextField()
     private let signInLabel = UILabel()
-    private let usernameTextField = UITextField()
     private let passwordTextField = UITextField()
     private let stackView = UIStackView()
     private let signInButton = UIButton()

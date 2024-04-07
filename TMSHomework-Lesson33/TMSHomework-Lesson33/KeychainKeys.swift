@@ -12,4 +12,5 @@ enum KeychainKeys {
     static let username = "username"
     static let password = "password"
     static let authToken = "authToken"
+    static let currentDate = "currentDate"
 }
