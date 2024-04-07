@@ -17,6 +17,7 @@
 		7A1842642BC09C9300A6403F /* KeychainKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A1842632BC09C9300A6403F /* KeychainKeys.swift */; };
 		7A1842662BC1DB5A00A6403F /* LoginService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A1842652BC1DB5A00A6403F /* LoginService.swift */; };
 		7A1842682BC1EF1C00A6403F /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A1842672BC1EF1C00A6403F /* MainViewController.swift */; };
+		7A18426E2BC31DAE00A6403F /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A18426D2BC31DAE00A6403F /* NotificationService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		7A1842632BC09C9300A6403F /* KeychainKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainKeys.swift; sourceTree = "<group>"; };
 		7A1842652BC1DB5A00A6403F /* LoginService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginService.swift; sourceTree = "<group>"; };
 		7A1842672BC1EF1C00A6403F /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		7A18426D2BC31DAE00A6403F /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,18 +68,51 @@
 			isa = PBXGroup;
 			children = (
 				7A18425F2BC075F900A6403F /* TMSHomework-Lesson33.entitlements */,
-				7A1842462BBEBE7500A6403F /* AppDelegate.swift */,
-				7A1842482BBEBE7500A6403F /* SceneDelegate.swift */,
-				7A18424A2BBEBE7500A6403F /* LoginViewController.swift */,
-				7A1842672BC1EF1C00A6403F /* MainViewController.swift */,
-				7A18425D2BC035DA00A6403F /* AuthService.swift */,
-				7A1842652BC1DB5A00A6403F /* LoginService.swift */,
-				7A1842632BC09C9300A6403F /* KeychainKeys.swift */,
+				7A18426B2BC31D5700A6403F /* Delegates */,
+				7A18426C2BC31D6800A6403F /* Controllers */,
+				7A18426A2BC31D4100A6403F /* Utils */,
+				7A1842692BC31CEF00A6403F /* Services */,
 				7A18424F2BBEBE7700A6403F /* Assets.xcassets */,
 				7A1842512BBEBE7700A6403F /* LaunchScreen.storyboard */,
 				7A1842542BBEBE7700A6403F /* Info.plist */,
 			);
 			path = "TMSHomework-Lesson33";
+			sourceTree = "<group>";
+		};
+		7A1842692BC31CEF00A6403F /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				7A18425D2BC035DA00A6403F /* AuthService.swift */,
+				7A1842652BC1DB5A00A6403F /* LoginService.swift */,
+				7A18426D2BC31DAE00A6403F /* NotificationService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		7A18426A2BC31D4100A6403F /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				7A1842632BC09C9300A6403F /* KeychainKeys.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		7A18426B2BC31D5700A6403F /* Delegates */ = {
+			isa = PBXGroup;
+			children = (
+				7A1842462BBEBE7500A6403F /* AppDelegate.swift */,
+				7A1842482BBEBE7500A6403F /* SceneDelegate.swift */,
+			);
+			path = Delegates;
+			sourceTree = "<group>";
+		};
+		7A18426C2BC31D6800A6403F /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				7A18424A2BBEBE7500A6403F /* LoginViewController.swift */,
+				7A1842672BC1EF1C00A6403F /* MainViewController.swift */,
+			);
+			path = Controllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -160,6 +195,7 @@
 				7A1842642BC09C9300A6403F /* KeychainKeys.swift in Sources */,
 				7A1842662BC1DB5A00A6403F /* LoginService.swift in Sources */,
 				7A18424B2BBEBE7500A6403F /* LoginViewController.swift in Sources */,
+				7A18426E2BC31DAE00A6403F /* NotificationService.swift in Sources */,
 				7A1842472BBEBE7500A6403F /* AppDelegate.swift in Sources */,
 				7A1842492BBEBE7500A6403F /* SceneDelegate.swift in Sources */,
 				7A18425E2BC035DA00A6403F /* AuthService.swift in Sources */,

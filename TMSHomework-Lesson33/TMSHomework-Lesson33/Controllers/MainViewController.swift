@@ -28,6 +28,7 @@ class MainViewController: UIViewController {
     private func setupUsernameLabel() {
         let username = authService.getValue(for: KeychainKeys.username) ?? "Error: username not found"
         let text = "Hello, " + username + "!👋"
+        usernameLabel.textColor = .black
         usernameLabel.font = UIFont.systemFont(ofSize: 25)
         
         let attributedUsernameText = NSMutableAttributedString(string: text)
@@ -42,6 +43,7 @@ class MainViewController: UIViewController {
     private func setupPasswordLabel() {
         let password = authService.getValue(for: KeychainKeys.password) ?? "Error: password not found"
         passwordLabel.text = "Password: " + password
+        passwordLabel.textColor = .black
         passwordLabel.numberOfLines = 2
         passwordLabel.font = UIFont.systemFont(ofSize: 15)
         passwordLabel.textAlignment = .left
@@ -51,6 +53,7 @@ class MainViewController: UIViewController {
     private func setupTokenLabel() {
         let token = authService.getValue(for: KeychainKeys.authToken) ?? "Error: authToken not found"
         tokenLabel.text = "Token: " + token
+        tokenLabel.textColor = .black
         tokenLabel.numberOfLines = 2
         tokenLabel.font = UIFont.systemFont(ofSize: 15)
         tokenLabel.textAlignment = .left
@@ -60,6 +63,7 @@ class MainViewController: UIViewController {
     private func setupTimeOfSignInLabel() {
         let date = authService.getValue(for: KeychainKeys.currentDate) ?? "Error: date not found"
         timeOfSignInLabel.text = "Last time of sign in:\n" + date
+        timeOfSignInLabel.textColor = .black
         timeOfSignInLabel.numberOfLines = 2
         timeOfSignInLabel.font = UIFont.systemFont(ofSize: 15)
         timeOfSignInLabel.textAlignment = .left
@@ -121,9 +125,6 @@ class MainViewController: UIViewController {
     
     // MARK: - @objc func
     @objc func signOutButtonTapped() {
-        let loginVC = LoginViewController()
-        view.window?.rootViewController = loginVC
-        loginVC.usernameTextField.text = LoginService.shared.getUsername()
         LoginService.shared.signOut()
     }
     

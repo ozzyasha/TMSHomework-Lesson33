@@ -28,6 +28,7 @@ class LoginViewController: UIViewController {
     // MARK: - Setup UI
     private func setupSignInLabel() {
         signInLabel.text = "Sign in"
+        signInLabel.textColor = .black
         signInLabel.textAlignment = .center
         signInLabel.font = UIFont.systemFont(ofSize: 40, weight: .bold)
         signInLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -118,8 +119,6 @@ class LoginViewController: UIViewController {
     @objc func signInButtonTapped() {
         if let usernameText = usernameTextField.text, let passwordText = passwordTextField.text {
             LoginService.shared.signIn(login: usernameText, password: passwordText)
-            let mainVC = MainViewController()
-            view.window?.rootViewController = mainVC
         }
     }
     
@@ -165,9 +164,3 @@ extension LoginViewController: UITextFieldDelegate {
     }
     
 }
-
-//Сделать приложение, которое будет иметь экран локального входа, после входа должен сохраниться логин, пароль и полученный из сервиса ключ.
-//Если вход осуществлен, при запуске открывать основной экран, а не экран с логином.
-//Через сутки показать уведомление о требуемом релогине.
-//
-//*Если вход был больше суток назад, открывать экран логина с предзаполненным логином.
