@@ -80,10 +80,11 @@ class MainViewController: UIViewController {
         print(authService.getValue(for: KeychainKeys.authToken) ?? "Error: authToken not found")
     }
     
+    // MARK: - @objc func
     @objc func signOutButtonTapped() {
         let loginVC = LoginViewController()
         view.window?.rootViewController = loginVC
-        UserDefaults.standard.set("loginVC", forKey: "rootViewController")
+        LoginService.shared.signOut()
     }
     
     

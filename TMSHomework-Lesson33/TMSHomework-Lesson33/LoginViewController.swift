@@ -9,8 +9,6 @@ import UIKit
 
 class LoginViewController: UIViewController {
     
-    private let authService: AuthService = SwiftyKeychainKitAuthService.shared
-    
     private let signInLabel = UILabel()
     private let usernameTextField = UITextField()
     private let passwordTextField = UITextField()
@@ -106,6 +104,7 @@ class LoginViewController: UIViewController {
         
     }
     
+    // MARK: - @objc func
     @objc func textFieldDidChange() {
         if usernameTextField.text!.isEmpty || passwordTextField.text!.isEmpty {
             signInButton.backgroundColor = .systemGray
@@ -118,13 +117,9 @@ class LoginViewController: UIViewController {
     
     @objc func signInButtonTapped() {
         if let usernameText = usernameTextField.text, let passwordText = passwordTextField.text {
-            authService.set(usernameText, for: KeychainKeys.username)
-            authService.set(passwordText, for: KeychainKeys.password)
-            authService.set(LoginService.shared.signIn(), for: KeychainKeys.authToken)
-            
+            LoginService.shared.signIn(login: usernameText, password: passwordText)
             let mainVC = MainViewController()
             view.window?.rootViewController = mainVC
-            UserDefaults.standard.set("mainVC", forKey: "rootViewController")
         }
     }
     

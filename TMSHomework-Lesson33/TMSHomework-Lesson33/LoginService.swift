@@ -9,10 +9,21 @@ import Foundation
 
 class LoginService {
     
+    private let authService: AuthService = SwiftyKeychainKitAuthService.shared
+    
     static let shared = LoginService()
     
-    func signIn() -> String {
+    func signIn(login: String, password: String) {
         let authKey = UUID().uuidString
-        return authKey
+        authService.set(login, for: KeychainKeys.username)
+        authService.set(password, for: KeychainKeys.password)
+        authService.set(authKey, for: KeychainKeys.authToken)
+        
+        UserDefaults.standard.set("mainVC", forKey: "rootViewController")
+    }
+    
+    func signOut() {
+        authService.clean()
+        UserDefaults.standard.set("loginVC", forKey: "rootViewController")
     }
 }
