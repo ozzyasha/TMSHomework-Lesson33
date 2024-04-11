@@ -10,6 +10,7 @@ import UIKit
 
 class LoginService {
     
+    private init() { }
     private let authService: AuthService = SwiftyKeychainKitAuthService.shared
     
     static let shared = LoginService()

@@ -18,6 +18,7 @@ protocol AuthService {
 
 class SwiftyKeychainKitAuthService: AuthService {
     
+    private init() { }
     static let shared = SwiftyKeychainKitAuthService()
     
     let keychain = Keychain()
