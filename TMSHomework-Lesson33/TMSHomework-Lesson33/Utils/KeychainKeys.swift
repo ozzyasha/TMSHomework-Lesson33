@@ -13,4 +13,5 @@ enum KeychainKeys {
     static let password = "password"
     static let authToken = "authToken"
     static let currentDate = "currentDate"
+    static let countdownSeconds = "countdownSeconds"
 }

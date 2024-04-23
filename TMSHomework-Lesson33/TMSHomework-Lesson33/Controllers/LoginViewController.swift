@@ -27,7 +27,7 @@ class LoginViewController: UIViewController {
     
     // MARK: - Setup UI
     private func setupSignInLabel() {
-        signInLabel.text = "Sign in"
+        signInLabel.text = String(localized: "signInLabel.title", defaultValue: "Sign in",comment: "signInLabel.title")
         signInLabel.textColor = .black
         signInLabel.textAlignment = .center
         signInLabel.font = UIFont.systemFont(ofSize: 40, weight: .bold)
@@ -37,7 +37,7 @@ class LoginViewController: UIViewController {
     private func setupUsernameTextField() {
         usernameTextField.delegate = self
         usernameTextField.borderStyle = .roundedRect
-        usernameTextField.placeholder = "username"
+        usernameTextField.placeholder = String(localized: "username")
         usernameTextField.autocorrectionType = .no
         usernameTextField.autocapitalizationType = .none
         usernameTextField.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
@@ -47,7 +47,7 @@ class LoginViewController: UIViewController {
     private func setupPasswordTextField() {
         passwordTextField.delegate = self
         passwordTextField.borderStyle = .roundedRect
-        passwordTextField.placeholder = "password"
+        passwordTextField.placeholder = String(localized: "password")
         passwordTextField.autocorrectionType = .no
         passwordTextField.autocapitalizationType = .none
         passwordTextField.isSecureTextEntry = true
@@ -56,7 +56,8 @@ class LoginViewController: UIViewController {
     }
     
     private func setupSignInButton() {
-        signInButton.setTitle("Sign in", for: .normal)
+        let signInLocalizedString = String(localized: "signInButton.title", defaultValue: "Sign in", comment: "signInButton.title")
+        signInButton.setTitle(signInLocalizedString, for: .normal)
         signInButton.setTitleColor(.white, for: .normal)
         signInButton.layer.cornerRadius = 5
         signInButton.backgroundColor = .systemGray

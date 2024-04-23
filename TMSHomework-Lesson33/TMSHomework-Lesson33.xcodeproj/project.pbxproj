@@ -18,6 +18,12 @@
 		7A1842662BC1DB5A00A6403F /* LoginService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A1842652BC1DB5A00A6403F /* LoginService.swift */; };
 		7A1842682BC1EF1C00A6403F /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A1842672BC1EF1C00A6403F /* MainViewController.swift */; };
 		7A18426E2BC31DAE00A6403F /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A18426D2BC31DAE00A6403F /* NotificationService.swift */; };
+		7AC9180A2BD7F576005F9E31 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 7AC918092BD7F576005F9E31 /* Localizable.xcstrings */; };
+		7AC9180D2BD80495005F9E31 /* RxBlocking in Frameworks */ = {isa = PBXBuildFile; productRef = 7AC9180C2BD80495005F9E31 /* RxBlocking */; };
+		7AC9180F2BD80495005F9E31 /* RxBlocking-Dynamic in Frameworks */ = {isa = PBXBuildFile; productRef = 7AC9180E2BD80495005F9E31 /* RxBlocking-Dynamic */; };
+		7AC918112BD80495005F9E31 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 7AC918102BD80495005F9E31 /* RxCocoa */; };
+		7AC918132BD80495005F9E31 /* RxCocoa-Dynamic in Frameworks */ = {isa = PBXBuildFile; productRef = 7AC918122BD80495005F9E31 /* RxCocoa-Dynamic */; };
+		7AC918152BD80495005F9E31 /* RxRelay in Frameworks */ = {isa = PBXBuildFile; productRef = 7AC918142BD80495005F9E31 /* RxRelay */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +40,7 @@
 		7A1842652BC1DB5A00A6403F /* LoginService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginService.swift; sourceTree = "<group>"; };
 		7A1842672BC1EF1C00A6403F /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		7A18426D2BC31DAE00A6403F /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
+		7AC918092BD7F576005F9E31 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -41,7 +48,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7AC918152BD80495005F9E31 /* RxRelay in Frameworks */,
+				7AC9180F2BD80495005F9E31 /* RxBlocking-Dynamic in Frameworks */,
+				7AC918132BD80495005F9E31 /* RxCocoa-Dynamic in Frameworks */,
 				7A18425C2BC0356F00A6403F /* SwiftyKeychainKit in Frameworks */,
+				7AC918112BD80495005F9E31 /* RxCocoa in Frameworks */,
+				7AC9180D2BD80495005F9E31 /* RxBlocking in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -68,6 +80,7 @@
 			isa = PBXGroup;
 			children = (
 				7A18425F2BC075F900A6403F /* TMSHomework-Lesson33.entitlements */,
+				7AC918092BD7F576005F9E31 /* Localizable.xcstrings */,
 				7A18426B2BC31D5700A6403F /* Delegates */,
 				7A18426C2BC31D6800A6403F /* Controllers */,
 				7A18426A2BC31D4100A6403F /* Utils */,
@@ -133,6 +146,11 @@
 			name = "TMSHomework-Lesson33";
 			packageProductDependencies = (
 				7A18425B2BC0356F00A6403F /* SwiftyKeychainKit */,
+				7AC9180C2BD80495005F9E31 /* RxBlocking */,
+				7AC9180E2BD80495005F9E31 /* RxBlocking-Dynamic */,
+				7AC918102BD80495005F9E31 /* RxCocoa */,
+				7AC918122BD80495005F9E31 /* RxCocoa-Dynamic */,
+				7AC918142BD80495005F9E31 /* RxRelay */,
 			);
 			productName = "TMSHomework-Lesson33";
 			productReference = 7A1842432BBEBE7400A6403F /* TMSHomework-Lesson33.app */;
@@ -160,10 +178,12 @@
 			knownRegions = (
 				en,
 				Base,
+				ru,
 			);
 			mainGroup = 7A18423A2BBEBE7400A6403F;
 			packageReferences = (
 				7A18425A2BC0356F00A6403F /* XCRemoteSwiftPackageReference "SwiftyKeychainKit" */,
+				7AC9180B2BD80495005F9E31 /* XCRemoteSwiftPackageReference "RxSwift" */,
 			);
 			productRefGroup = 7A1842442BBEBE7400A6403F /* Products */;
 			projectDirPath = "";
@@ -181,6 +201,7 @@
 			files = (
 				7A1842532BBEBE7700A6403F /* LaunchScreen.storyboard in Resources */,
 				7A1842502BBEBE7700A6403F /* Assets.xcassets in Resources */,
+				7AC9180A2BD7F576005F9E31 /* Localizable.xcstrings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -423,6 +444,14 @@
 				kind = branch;
 			};
 		};
+		7AC9180B2BD80495005F9E31 /* XCRemoteSwiftPackageReference "RxSwift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ReactiveX/RxSwift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.7.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -430,6 +459,31 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 7A18425A2BC0356F00A6403F /* XCRemoteSwiftPackageReference "SwiftyKeychainKit" */;
 			productName = SwiftyKeychainKit;
+		};
+		7AC9180C2BD80495005F9E31 /* RxBlocking */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7AC9180B2BD80495005F9E31 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxBlocking;
+		};
+		7AC9180E2BD80495005F9E31 /* RxBlocking-Dynamic */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7AC9180B2BD80495005F9E31 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = "RxBlocking-Dynamic";
+		};
+		7AC918102BD80495005F9E31 /* RxCocoa */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7AC9180B2BD80495005F9E31 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxCocoa;
+		};
+		7AC918122BD80495005F9E31 /* RxCocoa-Dynamic */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7AC9180B2BD80495005F9E31 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = "RxCocoa-Dynamic";
+		};
+		7AC918142BD80495005F9E31 /* RxRelay */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7AC9180B2BD80495005F9E31 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxRelay;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

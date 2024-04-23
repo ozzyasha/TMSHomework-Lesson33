@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 
 class MainViewController: UIViewController {
     
@@ -13,9 +15,12 @@ class MainViewController: UIViewController {
     private let usernameLabel = UILabel()
     private let passwordLabel = UILabel()
     private let tokenLabel = UILabel()
+    private let signOutTimerLabel = UILabel()
     private let timeOfSignInLabel = UILabel()
     private let signOutButton = UIButton()
     private let stackView = UIStackView()
+    
+    private let disposeBag = DisposeBag()
     
     // MARK: - MainViewController Lifecycle
     override func viewDidLoad() {
@@ -27,7 +32,7 @@ class MainViewController: UIViewController {
     // MARK: - Setup UI
     private func setupUsernameLabel() {
         let username = authService.getValue(for: KeychainKeys.username) ?? "Error: username not found"
-        let text = "Hello, " + username + "!👋"
+        let text = String(localized: "Hello, \(username)!👋")
         usernameLabel.textColor = .black
         usernameLabel.font = UIFont.systemFont(ofSize: 25)
         
@@ -42,7 +47,7 @@ class MainViewController: UIViewController {
     
     private func setupPasswordLabel() {
         let password = authService.getValue(for: KeychainKeys.password) ?? "Error: password not found"
-        passwordLabel.text = "Password: " + password
+        passwordLabel.text = String(localized: "Password: \(password)")
         passwordLabel.textColor = .black
         passwordLabel.numberOfLines = 2
         passwordLabel.font = UIFont.systemFont(ofSize: 15)
@@ -52,9 +57,9 @@ class MainViewController: UIViewController {
     
     private func setupTokenLabel() {
         let token = authService.getValue(for: KeychainKeys.authToken) ?? "Error: authToken not found"
-        tokenLabel.text = "Token: " + token
+        tokenLabel.text = String(localized: "Token: \(token)")
         tokenLabel.textColor = .black
-        tokenLabel.numberOfLines = 2
+        tokenLabel.numberOfLines = 3
         tokenLabel.font = UIFont.systemFont(ofSize: 15)
         tokenLabel.textAlignment = .left
         tokenLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -62,7 +67,7 @@ class MainViewController: UIViewController {
     
     private func setupTimeOfSignInLabel() {
         let date = authService.getValue(for: KeychainKeys.currentDate) ?? "Error: date not found"
-        timeOfSignInLabel.text = "Last time of sign in:\n" + date
+        timeOfSignInLabel.text = String(localized: "Last time of sign in:\n \(date)")
         timeOfSignInLabel.textColor = .black
         timeOfSignInLabel.numberOfLines = 2
         timeOfSignInLabel.font = UIFont.systemFont(ofSize: 15)
@@ -70,8 +75,31 @@ class MainViewController: UIViewController {
         timeOfSignInLabel.translatesAutoresizingMaskIntoConstraints = false
     }
     
+    private func setupSignOutTimerLabel() {
+        let countdownSeconds = 30
+        
+        Observable<Int>
+            .timer(.seconds(0), period: .seconds(1), scheduler: MainScheduler.instance)
+            .map { value in
+                return countdownSeconds - value
+            }
+            .take(30)
+            .map { seconds in
+                return String(localized: "The session will be cancelled in: \(String(format: "%02d:%02d", seconds / 60, seconds % 60))")
+            }
+            .bind(to: signOutTimerLabel.rx.text)
+            .disposed(by: disposeBag)
+
+        signOutTimerLabel.textColor = .black
+        signOutTimerLabel.numberOfLines = 2
+        signOutTimerLabel.font = UIFont.systemFont(ofSize: 15)
+        signOutTimerLabel.textAlignment = .left
+        signOutTimerLabel.translatesAutoresizingMaskIntoConstraints = false
+    }
+    
     private func setupSignOutButton() {
-        signOutButton.setTitle("Sign out", for: .normal)
+        let signOutLocalizedString = String(localized: "Sign out")
+        signOutButton.setTitle(signOutLocalizedString, for: .normal)
         signOutButton.setTitleColor(.white, for: .normal)
         signOutButton.layer.cornerRadius = 5
         signOutButton.backgroundColor = .systemBlue
@@ -83,6 +111,7 @@ class MainViewController: UIViewController {
         setupUsernameLabel()
         setupPasswordLabel()
         setupTokenLabel()
+        setupSignOutTimerLabel()
         setupTimeOfSignInLabel()
         setupSignOutButton()
         
@@ -94,6 +123,7 @@ class MainViewController: UIViewController {
         stackView.addArrangedSubview(usernameLabel)
         stackView.addArrangedSubview(passwordLabel)
         stackView.addArrangedSubview(tokenLabel)
+        stackView.addArrangedSubview(signOutTimerLabel)
         stackView.addArrangedSubview(timeOfSignInLabel)
         stackView.setCustomSpacing(50, after: timeOfSignInLabel)
         stackView.addArrangedSubview(signOutButton)
@@ -113,6 +143,9 @@ class MainViewController: UIViewController {
             
             timeOfSignInLabel.widthAnchor.constraint(equalToConstant: 300),
             timeOfSignInLabel.heightAnchor.constraint(equalToConstant: 50),
+            
+            signOutTimerLabel.widthAnchor.constraint(equalToConstant: 300),
+            signOutTimerLabel.heightAnchor.constraint(equalToConstant: 50),
             
             signOutButton.widthAnchor.constraint(equalToConstant: 250),
             signOutButton.heightAnchor.constraint(equalToConstant: 50),

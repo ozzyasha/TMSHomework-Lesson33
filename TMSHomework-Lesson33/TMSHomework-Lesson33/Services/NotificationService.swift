@@ -34,14 +34,15 @@ class NotificationService: NSObject {
     func requestDateNotification(currentDate: Date) {
         
         let content = UNMutableNotificationContent()
-        content.title = "Notification"
-        content.body = "Time is out. Need to relogin."
+        content.title = String(localized: "Notification")
+        content.body = String(localized: "Time is out. Need to relogin.")
         content.sound = UNNotificationSound.default
 
         var dateComponents = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute, .second], from: currentDate)
-        dateComponents.day! += 1
+        dateComponents.second! += 30
+        print(dateComponents)
         let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: false)
-        let request = UNNotificationRequest(identifier: "day", content: content, trigger: trigger)
+        let request = UNNotificationRequest(identifier: "second", content: content, trigger: trigger)
         
         self.removeAllPendingNotifications()
         self.UNCurrentCenter.add(request)
