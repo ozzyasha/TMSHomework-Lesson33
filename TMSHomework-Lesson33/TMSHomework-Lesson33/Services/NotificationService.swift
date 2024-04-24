@@ -46,6 +46,7 @@ class NotificationService: NSObject {
         
         self.removeAllPendingNotifications()
         self.UNCurrentCenter.add(request)
+        print("current date: \(currentDate)")
     }
     
     func removeAllPendingNotifications() {

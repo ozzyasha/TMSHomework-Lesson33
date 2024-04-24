@@ -50,7 +50,7 @@ class MainViewController: UIViewController {
         passwordLabel.text = String(localized: "Password: \(password)")
         passwordLabel.textColor = .black
         passwordLabel.numberOfLines = 2
-        passwordLabel.font = UIFont.systemFont(ofSize: 15)
+        passwordLabel.font = UIFont.systemFont(ofSize: 14)
         passwordLabel.textAlignment = .left
         passwordLabel.translatesAutoresizingMaskIntoConstraints = false
     }
@@ -60,39 +60,36 @@ class MainViewController: UIViewController {
         tokenLabel.text = String(localized: "Token: \(token)")
         tokenLabel.textColor = .black
         tokenLabel.numberOfLines = 3
-        tokenLabel.font = UIFont.systemFont(ofSize: 15)
+        tokenLabel.font = UIFont.systemFont(ofSize: 14)
         tokenLabel.textAlignment = .left
         tokenLabel.translatesAutoresizingMaskIntoConstraints = false
     }
     
     private func setupTimeOfSignInLabel() {
         let date = authService.getValue(for: KeychainKeys.currentDate) ?? "Error: date not found"
-        timeOfSignInLabel.text = String(localized: "Last time of sign in:\n \(date)")
+        timeOfSignInLabel.text = String(localized: "Last time of sign in:\n\(date)")
         timeOfSignInLabel.textColor = .black
         timeOfSignInLabel.numberOfLines = 2
-        timeOfSignInLabel.font = UIFont.systemFont(ofSize: 15)
+        timeOfSignInLabel.font = UIFont.systemFont(ofSize: 14)
         timeOfSignInLabel.textAlignment = .left
         timeOfSignInLabel.translatesAutoresizingMaskIntoConstraints = false
     }
     
     private func setupSignOutTimerLabel() {
-        let countdownSeconds = 30
-        
+        let countdownSeconds = Int(authService.getValue(for: KeychainKeys.countdownSeconds) ?? "Error: can't receive the value") ?? 0
         Observable<Int>
             .timer(.seconds(0), period: .seconds(1), scheduler: MainScheduler.instance)
             .map { value in
                 return countdownSeconds - value
             }
-            .take(30)
+            .take(countdownSeconds + 1)
             .map { seconds in
-                return String(localized: "The session will be cancelled in: \(String(format: "%02d:%02d", seconds / 60, seconds % 60))")
-            }
-            .bind(to: signOutTimerLabel.rx.text)
-            .disposed(by: disposeBag)
+                return String(localized: "The session will be cancelled in \(seconds) seconds")
+            }.bind(to: signOutTimerLabel.rx.text).disposed(by: disposeBag)
 
         signOutTimerLabel.textColor = .black
         signOutTimerLabel.numberOfLines = 2
-        signOutTimerLabel.font = UIFont.systemFont(ofSize: 15)
+        signOutTimerLabel.font = UIFont.systemFont(ofSize: 14)
         signOutTimerLabel.textAlignment = .left
         signOutTimerLabel.translatesAutoresizingMaskIntoConstraints = false
     }
@@ -132,19 +129,19 @@ class MainViewController: UIViewController {
         view.addSubview(stackView)
         
         NSLayoutConstraint.activate([
-            usernameLabel.widthAnchor.constraint(equalToConstant: 300),
+            usernameLabel.widthAnchor.constraint(equalToConstant: 320),
             usernameLabel.heightAnchor.constraint(equalToConstant: 50),
             
-            passwordLabel.widthAnchor.constraint(equalToConstant: 300),
+            passwordLabel.widthAnchor.constraint(equalToConstant: 320),
             passwordLabel.heightAnchor.constraint(equalToConstant: 50),
             
-            tokenLabel.widthAnchor.constraint(equalToConstant: 300),
+            tokenLabel.widthAnchor.constraint(equalToConstant: 320),
             tokenLabel.heightAnchor.constraint(equalToConstant: 50),
             
-            timeOfSignInLabel.widthAnchor.constraint(equalToConstant: 300),
+            timeOfSignInLabel.widthAnchor.constraint(equalToConstant: 320),
             timeOfSignInLabel.heightAnchor.constraint(equalToConstant: 50),
             
-            signOutTimerLabel.widthAnchor.constraint(equalToConstant: 300),
+            signOutTimerLabel.widthAnchor.constraint(equalToConstant: 320),
             signOutTimerLabel.heightAnchor.constraint(equalToConstant: 50),
             
             signOutButton.widthAnchor.constraint(equalToConstant: 250),

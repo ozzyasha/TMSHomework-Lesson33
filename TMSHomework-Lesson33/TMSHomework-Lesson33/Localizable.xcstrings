@@ -11,7 +11,7 @@
         }
       }
     },
-    "Last time of sign in:\n %@" : {
+    "Last time of sign in:\n%@" : {
       "localizations" : {
         "ru" : {
           "stringUnit" : {
@@ -97,12 +97,54 @@
         }
       }
     },
-    "The session will be cancelled in: %@" : {
+    "The session will be cancelled in %lld seconds" : {
       "localizations" : {
+        "en" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "The session will be cancelled in %lld second"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "new",
+                  "value" : "The session will be cancelled in %lld seconds"
+                }
+              }
+            }
+          }
+        },
         "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Сессия будет завершена через:\n %@"
+          "variations" : {
+            "plural" : {
+              "few" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Сесссия будет завершена через %lld секунды"
+                }
+              },
+              "many" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Сесссия будет завершена через %lld секунд"
+                }
+              },
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Сесссия будет завершена через %lld секундy"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Сесссия будет завершена через %lld секунд"
+                }
+              }
+            }
           }
         }
       }

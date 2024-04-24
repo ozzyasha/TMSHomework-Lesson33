@@ -19,11 +19,13 @@ class LoginService {
         let authKey = UUID().uuidString
         let currentDate = Date()
         let timeOfSignIn = currentDate.formatted(date: .abbreviated, time: .standard)
+        let countdownSeconds = 30
         
         authService.set(login, for: KeychainKeys.username)
         authService.set(password, for: KeychainKeys.password)
         authService.set(authKey, for: KeychainKeys.authToken)
         authService.set(timeOfSignIn, for: KeychainKeys.currentDate)
+        authService.set(String(countdownSeconds), for: KeychainKeys.countdownSeconds)
         
         if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene {
             if let window = windowScene.windows.first {
